@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Productos</title>
+    <meta charset="utf-8" />
+    <link rel="StyleSheet" href="estilo.css" type="text/css" media="screen" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+    <script src="codigo.js"></script>
+  </head>
+
+  <body class="container bg-success p-2 text-dark bg-opacity-25">
+    <div class="bg-success p-2 text-dark bg-opacity-10">
+      <h1>Tienda online</h1>
+      <p class="h3">Universidad de El Salvador</p>
+      <p class="h5">Fabio Ernesto Flores Mendoza FM19038</p>
+
+      <div class="bg-success p-2 text-dark bg-opacity-10">
+        <form name="create-product">
+          <div class="row">
+            <div class="col">
+              <label class="form-label">Titulo</label
+              ><input
+                class="form-control"
+                id="title-create"
+                placeholder="Ingrese titulo"
+                required
+              />
+            </div>
+            <div class="col">
+              <label class="form-label">Precio</label
+              ><input
+                class="form-control"
+                id="price-create"
+                placeholder="$0.00"
+                required
+              />
+            </div>
+            <div class="col">
+              <label class="form-label">Categoria:</label>
+              <select
+                class="form-select"
+                id="category-create"
+                aria-label="Categoria"
+              >
+                <option value="caballeros">Caballeros</option>
+                <option value="damas">Damas</option>
+                <option value="electronicos">Electronicos</option>
+                <option value="joyeria">Joyería</option>
+              </select>
+            </div>
+          </div>
+
+          <label class="form-label">Descripción</label>
+          <textarea
+            class="form-control"
+            id="description-create"
+            required
+          ></textarea>
+
+          <label class="form-label">Imagen</label>
+          <input
+            class="form-control"
+            id="img-create"
+            placeholder="url de la imagen"
+            required
+          />
+          <div class="col">
+            <br />
+            <button class="send-button" type="button" onclick="crearProducto()">
+              <div class="svg-wrapper-1">
+                <div class="svg-wrapper">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    height="24"
+                  >
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                    <path
+                      fill="currentColor"
+                      d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+              <span>Send</span>
+            </button>
+          </div>
+        </form>
+      </div>
+      <br />
+      <p>
+        <button
+          class="learn-more"
+          onclick="obtenerProductos();this.style.display='none';"
+        >
+          <span class="circle" aria-hidden="true">
+            <span class="icon arrow"></span>
+          </span>
+          <span class="button-text">Get products</span>
+        </button>
+      </p>
+    </div>
+
+    <div
+      class="bg-success p-2 text-dark bg-opacity-10"
+      id="listado"
+      style="display: none"
+    >
+      <form name="filtroprods" id="filtroprods">
+        <label class="form-label">Seleccione Categorias</label>
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="c1"
+          value="c1"
+          checked
+        />Electronicos
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="c2"
+          value="c2"
+          checked
+        />Joyería
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="c3"
+          value="c3"
+          checked
+        />Ropa Caballero
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="c4"
+          value="c4"
+          checked
+        />Ropa Dama
+        <ol>
+          <li>Click en la imagen para Acercamiento</li>
+          <li>Click en precio para ordenar Asc o Desc</li>
+        </ol>
+        <div class="row">
+          <table
+            class="table table-striped table-bordered table-hover"
+            id="tabla"
+            border="1"
+          >
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">foto</th>
+                <th scope="col" id="price">price</th>
+                <th scope="col">title</th>
+                <th scope="col">description</th>
+                <th scope="col">category</th>
+                <th scope="col">Eliminar</th>
+              </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
